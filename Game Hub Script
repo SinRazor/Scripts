@@ -148,39 +148,21 @@ local FinishedLoading = Notif:Notify("Loaded xsx example", 4, "success")
 local gui = game:GetService("CoreGui"):FindFirstChild("screen")
 
 if gui then
-	local container = gui:FindFirstChild("containerFrame", true)
+	local rightBar = gui:FindFirstChild("rightBar", true)
 
-	if container then
+	if rightBar then
 
 		local Close = Instance.new("TextButton")
+		Close.Name = "Close"
 		Close.Size = UDim2.new(0, 30, 0, 30)
-		Close.Position = UDim2.new(1, -35, 0, 5)
 		Close.Text = "X"
-		Close.Parent = container
-
-		Close.MouseButton1Click:Connect(function()
-			gui:Destroy()
-		end)
+		Close.Parent = rightBar
 
 		local Minimize = Instance.new("TextButton")
+		Minimize.Name = "Minimize"
 		Minimize.Size = UDim2.new(0, 30, 0, 30)
-		Minimize.Position = UDim2.new(1, -70, 0, 5)
 		Minimize.Text = "-"
-		Minimize.Parent = container
-
-		local minimized = false
-
-		Minimize.MouseButton1Click:Connect(function()
-			minimized = not minimized
-
-			for _, v in pairs(container:GetChildren()) do
-				if v.Name ~= "Minimize" and v.Name ~= "Close" then
-					if v:IsA("Frame") then
-						v.Visible = not minimized
-					end
-				end
-			end
-		end)
+		Minimize.Parent = rightBar
 
 	end
 end
