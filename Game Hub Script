@@ -125,16 +125,17 @@ end
 
 local Amount = nil
 
-local EggAmount = Tab1:NewTextbox("Amount", "Enter Amount", function(value)
-	Amount = value
-end
-)
+--local EggAmount = Tab1:NewTextbox("Amount", "Enter Amount", function(value)
+	--Amount = value
+--end
+--)
 
 local HatchEggs = Tab1:NewButton("Hatch Eggs", function()
 	if(SelectedEgg ~= nil) then
 		local args = {
 			SelectedEgg,
-			Amount
+			10
+			--Amount
 		}
 		game:GetService("ReplicatedStorage"):WaitForChild("KPets"):WaitForChild("Events"):WaitForChild("Hatch"):FireServer(unpack(args))
 	end
