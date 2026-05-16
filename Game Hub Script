@@ -144,3 +144,44 @@ end
 )
 
 local FinishedLoading = Notif:Notify("Loaded xsx example", 4, "success")
+
+local CoreGui = game:GetService("CoreGui")
+
+local MainGui
+local MainFrame
+
+for _, v in pairs(CoreGui:GetDescendants()) do
+	if v.Name == "Main" and v:IsA("Frame") then
+		MainFrame = v
+		MainGui = v.Parent
+		break
+	end
+end
+
+local Minimize = Instance.new("TextButton")
+Minimize.Size = UDim2.new(0, 30, 0, 30)
+Minimize.Position = UDim2.new(1, -70, 0, 5)
+Minimize.Text = "-"
+Minimize.Parent = MainFrame
+
+local Close = Instance.new("TextButton")
+Close.Size = UDim2.new(0, 30, 0, 30)
+Close.Position = UDim2.new(1, -35, 0, 5)
+Close.Text = "X"
+Close.Parent = MainFrame
+
+local minimized = false
+
+Minimize.MouseButton1Click:Connect(function()
+	minimized = not minimized
+
+	for _, v in pairs(MainFrame:GetChildren()) do
+		if v:IsA("Frame") and v ~= Minimize and v ~= Close then
+			v.Visible = not minimized
+		end
+	end
+end)
+
+Close.MouseButton1Click:Connect(function()
+	MainGui:Destroy()
+end)
