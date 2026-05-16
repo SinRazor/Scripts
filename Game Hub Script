@@ -94,7 +94,7 @@ end
 
 local SelectedEgg = nil
 
-local EggSelector = Tab1:NewSelector("Hatch 10x Eggs", "Beach Egg", {
+local EggSelector = Tab1:NewSelector("Hatch Eggs", "Beach Egg", {
 	"Beach Egg",
 	"Blizzard Egg",
 	"Celestial Egg",
@@ -126,7 +126,7 @@ end
 local Amount = nil
 
 local EggAmount = Tab1:NewTextbox("Amount", "Enter Amount", "", "numbers", "medium", true, false, function(value)
-	Amount = tonumber(Value)
+	Amount = tonumber(value)
 end
 )
 
