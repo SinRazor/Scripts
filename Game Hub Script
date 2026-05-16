@@ -27,23 +27,6 @@ local Tab1 = Init:NewTab("Dogshit Game 1")
 
 local Section1 = Tab1:NewSection("My First Project xDD")
 
-local Minimized = false
-
-UtilityTab:NewButton("Minimize UI", function()
-
-	Minimized = not Minimized
-
-	for _, v in pairs(game:GetService("CoreGui"):GetDescendants()) do
-		if v:IsA("Frame") then
-			if v.Name ~= "tabButtons" then
-				v.Visible = not Minimized
-			end
-		end
-	end
-
-end
-)
-
 UtilityTab:NewButton("Close UI", function()
 
 	for _, v in pairs(game:GetService("CoreGui"):GetChildren()) do
