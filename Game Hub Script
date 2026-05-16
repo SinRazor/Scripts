@@ -148,36 +148,38 @@ local FinishedLoading = Notif:Notify("Loaded xsx example", 4, "success")
 local gui = game:GetService("CoreGui"):FindFirstChild("screen")
 
 if gui then
-	local rightBar = gui:FindFirstChild("rightBar", true)
+	local container = gui:FindFirstChild("containerFrame", true)
 
-	if rightBar then
+	if container then
 
 		local Close = Instance.new("TextButton")
 		Close.Name = "Close"
 		Close.Size = UDim2.new(0, 30, 0, 30)
-		Close.AnchorPoint = Vector2.new(1, 0)
-		Close.Position = UDim2.new(1, -5, 0, 5)
+		Close.Position = UDim2.new(1, -35, 0, 5)
+		Close.BackgroundColor3 = Color3.fromRGB(35,35,35)
+		Close.TextColor3 = Color3.new(1,1,1)
 		Close.Text = "X"
-		Close.Parent = rightBar
+		Close.ZIndex = 999
+		Close.Parent = container
 
 		local Minimize = Instance.new("TextButton")
 		Minimize.Name = "Minimize"
 		Minimize.Size = UDim2.new(0, 30, 0, 30)
-		Minimize.AnchorPoint = Vector2.new(1, 0)
-		Minimize.Position = UDim2.new(1, -40, 0, 5)
+		Minimize.Position = UDim2.new(1, -70, 0, 5)
+		Minimize.BackgroundColor3 = Color3.fromRGB(35,35,35)
+		Minimize.TextColor3 = Color3.new(1,1,1)
 		Minimize.Text = "-"
-		Minimize.Parent = rightBar
+		Minimize.ZIndex = 999
+		Minimize.Parent = container
 
 		local minimized = false
 
 		Minimize.MouseButton1Click:Connect(function()
 			minimized = not minimized
 
-			for _, v in pairs(gui:GetDescendants()) do
-				if v:IsA("Frame") then
-					if v ~= rightBar and v.Name ~= "Close" and v.Name ~= "Minimize" then
-						v.Visible = not minimized
-					end
+			for _, v in pairs(container:GetChildren()) do
+				if v:IsA("Frame") and v ~= Minimize and v ~= Close then
+					v.Visible = not minimized
 				end
 			end
 		end)
