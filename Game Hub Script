@@ -1,0 +1,93 @@
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Consistt/Ui/main/UnLeaked"))()
+
+
+library.rank = "developer"
+local Wm = library:Watermark("Dogshit Game Hub | v" .. library.version ..  " | " .. library:GetUsername() .. " | rank: " .. library.rank)
+local FpsWm = Wm:AddWatermark("fps: " .. library.fps)
+coroutine.wrap(function()
+    while wait(.75) do
+        FpsWm:Text("fps: " .. library.fps)
+    end
+end)()
+
+
+local Notif = library:InitNotifications()
+
+local LoadingXSX = Notif:Notify("Loading dogshit game hub, please be patient.", 5, "information") 
+
+library.title = "Vigil"
+
+library:Introduction()
+wait(1)
+local Init = library:Init()
+
+local Tab1 = Init:NewTab("Dogshit Game 1")
+
+local Section1 = Tab1:NewSection("My First Project xDD")
+
+
+local Label1 = Tab1:NewLabel("Autofarm Stuff", "left")--"left", "center", "right"
+
+local AutoDrill = false
+
+local Toggle1 = Tab1:NewToggle("Auto Drill", false, function(value)
+	AutoDrill = value
+	print(AutoDrill)
+end)
+
+local validTools = {
+	["Aegean Tide"] = true,
+	["Amber"] = true,
+	["Arcane Auger"] = true,
+	["Candy"] = true,
+	["Celestial Borer"] = true,
+	["Crusher"] = true,
+	["Cyber"] = true,
+	["Diamond"] = true,
+	["Fossil"] = true,
+	["Glacier"] = true,
+	["Golden"] = true,
+	["Herculean"] = true,
+	["Icebreaker"] = true,
+	["Inferno"] = true,
+	["Infinity"] = true,
+	["Jungle Beast"] = true,
+	["Lava"] = true,
+	["Maelstrom"] = true,
+	["Mystic Bore"] = true,
+	["Neon"] = true,
+	["Olympian"] = true,
+	["Permafrost"] = true,
+	["Quantum"] = true,
+	["Rainbow"] = true,
+	["Ravager"] = true,
+	["Rift Auger"] = true,
+	["Rusty"] = true,
+	["Scalescrusher"] = true,
+	["Skyfang"] = true,
+	["Spellbound"] = true,
+	["Steel"] = true,
+	["Thornspike"] = true,
+	["Vinecutter"] = true,
+	["Voidstar"] = true,
+	["Volcano"] = true
+}
+
+spawn(function()
+	while true do
+		wait(0.0001)
+
+		if AutoDrill == true then
+			local character = game:GetService("Players").LocalPlayer.Character
+			local tool = character:FindFirstChildOfClass("Tool")
+
+			if tool and validTools[tool.Name] then
+				game:GetService("ReplicatedStorage")
+					:WaitForChild("GiveCash")
+					:FireServer(tool)
+			end
+		end
+	end
+end)
+
+local FinishedLoading = Notif:Notify("Loaded xsx example", 4, "success")
