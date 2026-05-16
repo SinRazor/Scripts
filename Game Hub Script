@@ -131,9 +131,6 @@ EggAmount:SetFunction(function(value)
 	Amount = tonumber(value)
 end
 )
-for i,v in pairs(EggAmount) do
-	print(i,v)
-end
 
 local HatchEggs = Tab1:NewButton("Hatch Eggs", function()
 	if(SelectedEgg ~= nil) then
