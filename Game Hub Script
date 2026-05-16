@@ -2,7 +2,7 @@ local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Consi
 
 
 library.rank = "developer"
-local Wm = library:Watermark("Dogshit Game Hub | v" .. library.version ..  " | " .. library:GetUsername() .. " | rank: " .. library.rank)
+local Wm = library:Watermark("Dogshit Game Hub | V1 | " .. library:GetUsername())
 local FpsWm = Wm:AddWatermark("fps: " .. library.fps)
 coroutine.wrap(function()
     while wait(.75) do
@@ -15,7 +15,7 @@ local Notif = library:InitNotifications()
 
 local LoadingXSX = Notif:Notify("Loading dogshit game hub, please be patient.", 5, "information") 
 
-library.title = "Vigil"
+library.title = "Dog Shit Game Destroyer"
 
 library:Introduction()
 wait(1)
@@ -87,6 +87,48 @@ spawn(function()
 					:FireServer(tool)
 			end
 		end
+	end
+end)
+
+local SelectedEgg = nil
+
+local EggSelector = Tab1:NewSelector("Hatch 10x Eggs", "Beach Egg", {
+	"Beach Egg",
+	"Blizzard Egg",
+	"Celestial Egg",
+	"Drake Egg",
+	"Easter Egg",
+	"Ember Egg",
+	"Enigma Egg",
+	"Fossil Egg",
+	"Glacier Egg",
+	"Inferno Egg",
+	"Jungle Egg",
+	"Jurassic Egg",
+	"Lava Egg",
+	"Nebula Egg",
+	"Necromancer Egg",
+	"Oceanic Egg",
+	"Olympian Egg",
+	"Pantheon Egg",
+	"Summer Egg",
+	"Tropical Egg",
+	"Without Egg"
+}
+)
+EggSelector:SetFunction(function(value)
+	SelectedEgg = value
+end
+)
+
+
+local HatchEggs = Tab1:NewButton("Hatch Eggs", function()
+	if(SelectedEgg ~= nil) then
+		local args = {
+			SelectedEgg,
+			10
+		}
+		game:GetService("ReplicatedStorage"):WaitForChild("KPets"):WaitForChild("Events"):WaitForChild("Hatch"):FireServer(unpack(args))
 	end
 end)
 
