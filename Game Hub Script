@@ -114,7 +114,6 @@ local EggSelector = Tab1:NewSelector("Hatch Eggs", "Beach Egg", {
 	"Pantheon Egg",
 	"Summer Egg",
 	"Tropical Egg",
-	"Without Egg"
 }
 )
 EggSelector:SetFunction(function(value)
