@@ -155,14 +155,36 @@ if gui then
 		local Close = Instance.new("TextButton")
 		Close.Name = "Close"
 		Close.Size = UDim2.new(0, 30, 0, 30)
+		Close.AnchorPoint = Vector2.new(1, 0)
+		Close.Position = UDim2.new(1, -5, 0, 5)
 		Close.Text = "X"
 		Close.Parent = rightBar
 
 		local Minimize = Instance.new("TextButton")
 		Minimize.Name = "Minimize"
 		Minimize.Size = UDim2.new(0, 30, 0, 30)
+		Minimize.AnchorPoint = Vector2.new(1, 0)
+		Minimize.Position = UDim2.new(1, -40, 0, 5)
 		Minimize.Text = "-"
 		Minimize.Parent = rightBar
+
+		local minimized = false
+
+		Minimize.MouseButton1Click:Connect(function()
+			minimized = not minimized
+
+			for _, v in pairs(gui:GetDescendants()) do
+				if v:IsA("Frame") then
+					if v ~= rightBar and v.Name ~= "Close" and v.Name ~= "Minimize" then
+						v.Visible = not minimized
+					end
+				end
+			end
+		end)
+
+		Close.MouseButton1Click:Connect(function()
+			gui:Destroy()
+		end)
 
 	end
 end
