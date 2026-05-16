@@ -33,7 +33,8 @@ local AutoDrill = false
 local Toggle1 = Tab1:NewToggle("Auto Drill", false, function(value)
 	AutoDrill = value
 	print(AutoDrill)
-end)
+end
+)
 
 local validTools = {
 	["Aegean Tide"] = true,
@@ -88,7 +89,8 @@ spawn(function()
 			end
 		end
 	end
-end)
+end
+)
 
 local SelectedEgg = nil
 
@@ -123,11 +125,10 @@ end
 
 local Amount = nil
 
-local EggAmount = Tab1:NewTextBox("Amoujnt", "Enter Amount", function(value)
+local EggAmount = Tab1:NewTextbox("Amount", "Enter Amount", function(value)
 	Amount = value
 end
 )
-
 
 local HatchEggs = Tab1:NewButton("Hatch Eggs", function()
 	if(SelectedEgg ~= nil) then
@@ -137,6 +138,7 @@ local HatchEggs = Tab1:NewButton("Hatch Eggs", function()
 		}
 		game:GetService("ReplicatedStorage"):WaitForChild("KPets"):WaitForChild("Events"):WaitForChild("Hatch"):FireServer(unpack(args))
 	end
-end)
+end
+)
 
 local FinishedLoading = Notif:Notify("Loaded xsx example", 4, "success")
