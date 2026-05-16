@@ -125,7 +125,9 @@ end
 
 local Amount = nil
 
-local EggAmount = Tab1:NewTextbox("Amount", "Enter Amount", "", "numbers", "medium", true, false, function(value)
+local EggAmount = Tab1:NewTextbox("Amount", "Enter Amount", "", "numbers", "medium", true, false)
+
+EggAmount:SetFunction(function(value)
 	Amount = tonumber(value)
 end
 )
