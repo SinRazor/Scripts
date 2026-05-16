@@ -125,12 +125,11 @@ end
 
 local Amount = nil
 
-local EggAmount = Tab1:NewTextbox("Amount", "Enter Amount")
-
-EggAmount:SetFunction(function(value)
-	Amount = value
+local EggAmount = Tab1:NewTextbox("Amount", "Enter Amount", "", "numbers", "medium", true, false, function(value)
+	Amount = tonumber(Value)
 end
 )
+
 
 local HatchEggs = Tab1:NewButton("Hatch Eggs", function()
 	if(SelectedEgg ~= nil) then
